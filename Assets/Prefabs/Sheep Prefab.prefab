@@ -91,8 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3895468108318567341}
   - component: {fileID: 3895468108318567340}
-  - component: {fileID: 3895468108318567337}
   - component: {fileID: 3895468108318567336}
+  - component: {fileID: 1621925546}
   m_Layer: 0
   m_Name: Sheep Prefab
   m_TagString: Untagged
@@ -129,19 +129,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runAwayRadius: 8
   movementSpeed: 4
---- !u!65 &3895468108318567337
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3895468108318567383}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.2, y: 1, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3895468108318567336
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -158,3 +145,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &1621925546
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895468108318567383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.53
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

@@ -18,7 +18,7 @@ public class SheepBehaviour : MonoBehaviour
 
     Vector3 nonYVector = new Vector3(1, 0, 1);
     Vector3 moveDirection;
-    Vector3 gravity = Vector3.down * 6f;
+    float gravity = -1f;
 
 
     private void OnValidate()
@@ -31,7 +31,7 @@ public class SheepBehaviour : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, thePlayer.position) < runAwayRadius)
         {
-            moveDirection = Vector3.Scale(nonYVector, (((transform.position - thePlayer.position).normalized) * movementSpeed));
+            moveDirection = new Vector3(transform.position.x - thePlayer.position.x, moveDirection.y, transform.position.z - thePlayer.position.z).normalized;
         }
 
         if (!isRunning)
@@ -42,10 +42,10 @@ public class SheepBehaviour : MonoBehaviour
         RaycastHit hit;
         if (!Physics.Raycast(transform.position, Vector3.down, out hit, 1))
         {
-            moveDirection = gravity;
+            moveDirection.y = gravity;
         }
 
-        rb.velocity = moveDirection;
+        rb.velocity = moveDirection * movementSpeed;
         if (rb.velocity.magnitude > 0.1f)
         {
             Quaternion r = Quaternion.LookRotation(rb.velocity);
@@ -60,7 +60,7 @@ public class SheepBehaviour : MonoBehaviour
         float randomX = Random.Range(-1f, 1f);
         float randomZ = Random.Range(-1f, 1f);
 
-        moveDirection = Vector3.Scale(nonYVector, (new Vector3(randomX, rb.velocity.y, randomZ) * movementSpeed));
+        moveDirection = new Vector3(randomX, rb.velocity.y, randomZ).normalized;
         yield return new WaitForSeconds(timeToRun);
 
         float timeToPause = Random.Range(1f, 4f);
