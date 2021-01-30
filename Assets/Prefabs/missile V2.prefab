@@ -9989,6 +9989,7 @@ MonoBehaviour:
   explosionHasForce: 1
   explosionRadius: 3
   explosionForce: 10
+  explosionSfx: {fileID: 8300000, guid: f306c23e65ec40742a667784266139cd, type: 3}
   target: {fileID: 0}
   rotationSpeed: 5
   velocity: 0
