@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class SheepBehaviour : Mammal
 {
-    Transform thePlayer;
-    Rigidbody rb;
-    Animator ani;
+    protected Transform thePlayer;
+    protected Rigidbody rb;
+    protected Animator ani;
+	protected bool specialMoveActive;
     ParticleSystem[] psGroup;
 	[SerializeField] GameObject soulParticle;
     [SerializeField] protected float runAwayRadius;
@@ -17,7 +18,7 @@ public class SheepBehaviour : Mammal
     protected bool enteredRadius = false;
 
     Vector3 nonYVector = new Vector3(1, 0, 1);
-    Vector3 moveDirection;
+    protected Vector3 moveDirection;
 
     protected bool stunned;
     protected float timeOfStun;
@@ -42,7 +43,7 @@ public class SheepBehaviour : Mammal
 	{
 		if (stunned)
 		{
-			ani.SetBool("Walk", true);
+			ani.SetBool("Walk", false);
 			if (Time.time - timeOfStun > stunDuration)
 			{
 				stunned = false;
@@ -83,13 +84,22 @@ public class SheepBehaviour : Mammal
 
     public virtual IEnumerator SpecialMove()
     {
-        PlayParticleGroup(true);
-        float storeMovementSpeed = movementSpeed;
-        movementSpeed = 13;
-        isRunning = true;
-        yield return new WaitForSeconds(0.5f);
-        movementSpeed = storeMovementSpeed;
-        PlayParticleGroup(false);
+		if (!specialMoveActive)
+		{
+			specialMoveActive = true;
+			PlayParticleGroup(true);
+			float storeMovementSpeed = movementSpeed;
+			movementSpeed = 13;
+			isRunning = true;
+			yield return new WaitForSeconds(0.5f);
+			specialMoveActive = false;
+			movementSpeed = storeMovementSpeed;
+			PlayParticleGroup(false);
+		}
+		else
+		{
+			yield break;
+		}
     }
 
 

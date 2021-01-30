@@ -14,6 +14,8 @@ public class PlayerController : Mammal
     Animator anim;
 	NavMeshAgent playerAgent;
     ParticleSystem screamPS;
+	[SerializeField] float shoutCooldown = 1f;
+	private float timeSinceLastShout;
 	[SerializeField] private LayerMask hittableLayers;
 
 	protected override void Start()
@@ -53,17 +55,21 @@ public class PlayerController : Mammal
     {
         if (Input.GetMouseButtonDown(1))
         {
-            screamPS.Play();
-            PlayClip();
+			if(Time.time - timeSinceLastShout > shoutCooldown)
+			{
+				timeSinceLastShout = Time.time;
+				screamPS.Play();
+				PlayClip();
 
-            Collider[] inRange = Physics.OverlapSphere(this.transform.position, shoutRange);
-            foreach (Collider go in inRange)
-            {
-                if (go.CompareTag("Sheep"))
-                {
-                    StartCoroutine(go.GetComponent<SheepBehaviour>().SpecialMove());
-                }
-            }
+				Collider[] inRange = Physics.OverlapSphere(this.transform.position, shoutRange);
+				foreach (Collider go in inRange)
+				{
+					if (go.CompareTag("Sheep"))
+					{
+						StartCoroutine(go.GetComponent<SheepBehaviour>().SpecialMove());
+					}
+				}
+			}
         }
     }
 

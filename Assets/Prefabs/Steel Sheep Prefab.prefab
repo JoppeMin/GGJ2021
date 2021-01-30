@@ -9986,12 +9986,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3895468108318567341}
-  - component: {fileID: 3895468108318567340}
+  - component: {fileID: 7036301936808704240}
   - component: {fileID: 3895468108318567336}
   - component: {fileID: 1621925546}
   - component: {fileID: 1972228412063245540}
   m_Layer: 0
-  m_Name: Sheep Prefab 1
+  m_Name: Steel Sheep Prefab
   m_TagString: Sheep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10013,7 +10013,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3895468108318567340
+--- !u!114 &7036301936808704240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10022,7 +10022,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3895468108318567383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de4031b8712ce8947ae2b864cd5d6000, type: 3}
+  m_Script: {fileID: 11500000, guid: 6418aa734676cbd4abb882c1eba34bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
@@ -10036,6 +10036,8 @@ MonoBehaviour:
   soulParticle: {fileID: 8645734907812902208, guid: 5d45fe35bd6c54a4dad198eccf80325b, type: 3}
   runAwayRadius: 3.5
   movementSpeed: 4
+  freezeTime: 8
+  scaleMultiplier: 1.5
 --- !u!54 &3895468108318567336
 Rigidbody:
   m_ObjectHideFlags: 0
