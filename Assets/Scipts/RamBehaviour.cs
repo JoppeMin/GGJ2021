@@ -23,7 +23,7 @@ public class RamBehaviour : SheepBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Rammable"))
+        if (collision.transform.CompareTag("Rammable") && isRamming)
         {
             Destroy(collision.gameObject);
         }
