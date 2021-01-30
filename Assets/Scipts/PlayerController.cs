@@ -53,6 +53,9 @@ public class PlayerController : Mammal
     {
         if (Input.GetMouseButtonDown(1))
         {
+            screamPS.Play();
+            PlayClip();
+
             Collider[] inRange = Physics.OverlapSphere(this.transform.position, shoutRange);
             foreach (Collider go in inRange)
             {
