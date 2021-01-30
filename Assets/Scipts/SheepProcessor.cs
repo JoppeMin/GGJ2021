@@ -5,6 +5,7 @@ using TMPro;
 
 public class SheepProcessor : MonoBehaviour
 {
+    public static SheepProcessor instance;
 
     TextMeshProUGUI sheepCounter;
     int sheepProcessed = 0;
@@ -18,8 +19,10 @@ public class SheepProcessor : MonoBehaviour
         amountOfSheepLeft = GameObject.FindGameObjectsWithTag("Sheep").Length;
         sheepCounter = GameObject.FindObjectOfType<TextMeshProUGUI>();
     }
+
     void Start()
     {
+        instance = this;
         updateSheepText();
     }
 

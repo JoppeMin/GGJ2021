@@ -1,22 +1,14 @@
 fileFormatVersion: 2
-guid: 1a409c345c38feb448d368ad2b4470ed
+guid: f067a773723c63b4b82e7ed5931ff633
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 2667949614841947897
-    second: Walk
-  - first:
-      74: -3100369314251171874
-    second: Idle
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Sheep
-    second: {fileID: 2100000, guid: 53fc905ce22d750468f1411287f558d8, type: 2}
+      74: 8633447420306964737
+    second: Turret|BezierCurveAction
+  externalObjects: {}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -45,16 +37,16 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 50
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 0
-    importBlendShapes: 0
-    importCameras: 0
-    importLights: 0
-    fileIdsGeneration: 2
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -106,7 +98,7 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
