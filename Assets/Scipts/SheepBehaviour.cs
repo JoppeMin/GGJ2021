@@ -8,6 +8,7 @@ public class SheepBehaviour : Mammal
     Transform thePlayer;
     Rigidbody rb;
     Animator ani;
+    ParticleSystem[] psGroup;
 
     [SerializeField]
     float runAwayRadius;
@@ -19,11 +20,10 @@ public class SheepBehaviour : Mammal
 
     Vector3 nonYVector = new Vector3(1, 0, 1);
     Vector3 moveDirection;
-    float gravity = -1f;
 
-	private bool stunned;
-	private float timeOfStun;
-	private float stunDuration;
+    private bool stunned;
+    private float timeOfStun;
+    private float stunDuration;
 
 
     private void OnValidate()
@@ -31,6 +31,7 @@ public class SheepBehaviour : Mammal
         thePlayer = GameObject.FindGameObjectWithTag("Player").transform;
         rb = this.gameObject.GetComponent<Rigidbody>();
         ani = this.gameObject.GetComponentInChildren<Animator>();
+        psGroup = this.gameObject.GetComponentsInChildren<ParticleSystem>();
     }
 
     private void Start()
@@ -39,48 +40,62 @@ public class SheepBehaviour : Mammal
     }
 
     void Update()
-	{
-		if (stunned)
-		{
-			ani.SetBool("Walk", true);
-			if(Time.time - timeOfStun > stunDuration)
-			{
-				stunned = false;
-			}
-		}
-		else
-		{
-			RaycastHit hit;
-			if (!Physics.Raycast(transform.position, Vector3.down, out hit, 1))
-			{
-				ani.SetBool("Walk", true);
-				return;
-			}
-			else
-			{
+    {
+        if (stunned)
+        {
+            ani.SetBool("Walk", true);
+            if (Time.time - timeOfStun > stunDuration)
+            {
+                stunned = false;
+            }
+        }
+        else
+        {
+            RaycastHit hit;
+            if (!Physics.Raycast(transform.position, Vector3.down, out hit, 1))
+            {
+                ani.SetBool("Walk", true);
+                return;
+            }
+            else
+            {
+                if (Vector3.Distance(transform.position, thePlayer.position) < runAwayRadius)
+                {
+                    ani.SetBool("Walk", true);
+                    moveDirection = new Vector3(transform.position.x - thePlayer.position.x, moveDirection.y, transform.position.z - thePlayer.position.z).normalized;
 
-				if (Vector3.Distance(transform.position, thePlayer.position) < runAwayRadius)
-				{
-					ani.SetBool("Walk", true);
-					moveDirection = new Vector3(transform.position.x - thePlayer.position.x, moveDirection.y, transform.position.z - thePlayer.position.z).normalized;
-				}
+                    if (Input.GetMouseButtonDown(1))
+                    {
+                        StartCoroutine(SpecialMove());
+                    }
+                }
 
-				if (!isRunning)
-				{
-					StartCoroutine(RunRandomDirection());
-				}
+                if (!isRunning)
+                {
+                    StartCoroutine(RunRandomDirection());
+                }
 
-				rb.velocity = moveDirection * movementSpeed;
-				if (rb.velocity.magnitude > 0.1f)
-				{
-					Quaternion r = Quaternion.LookRotation(rb.velocity);
-					transform.rotation = Quaternion.Slerp(transform.rotation, r, Time.deltaTime * 5);
-				}
-			}
-		}
-       
-
+                rb.velocity = moveDirection * movementSpeed;
+                if (rb.velocity.magnitude > 0.1f)
+                {
+                    Quaternion r = Quaternion.LookRotation(rb.velocity);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, r, Time.deltaTime * 5);
+                }
+            }
+        }
     }
+
+    public virtual IEnumerator SpecialMove()
+    {
+        PlayParticleGroup(true);
+        float storeMovementSpeed = movementSpeed;
+        movementSpeed = 13;
+        isRunning = true;
+        yield return new WaitForSeconds(0.5f);
+        movementSpeed = storeMovementSpeed;
+        PlayParticleGroup(false);
+    }
+
 
     IEnumerator RunRandomDirection()
     {
@@ -108,6 +123,16 @@ public class SheepBehaviour : Mammal
 		stunDuration = duration;
 	}
 
+    private void PlayParticleGroup(bool Play)
+    {
+        foreach (ParticleSystem ps in psGroup)
+        {
+            if (Play)
+                ps.Play();
+            else
+                ps.Stop();
+        }
+    }
 
     private void OnDrawGizmos()
     {
