@@ -538,7 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   homingMissilePrefab: {fileID: 1741956694927262, guid: a4eb662efce994446a753bc02ff1c0e5, type: 3}
   spawnpoint: {fileID: 1470683909}
-  timeBetweenShots: 1
+  timeBetweenShots: 3
   targets: []
 --- !u!136 &563499577
 CapsuleCollider:
@@ -1850,7 +1850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7820207198633611445, guid: 3f2229e0ff88e0d4f83876af1d065709, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7820207198633611446, guid: 3f2229e0ff88e0d4f83876af1d065709, type: 3}
       propertyPath: m_RootOrder

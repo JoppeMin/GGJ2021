@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Explosive : MonoBehaviour {
 
-    protected float lifetime;
+    [SerializeField] protected float lifetime;
     private float aliveTime;
 	public GameObject explosionFX;
 	public bool explosionHasForce;
@@ -17,7 +17,7 @@ public class Explosive : MonoBehaviour {
 
 	// Update is called once per frame
 	protected virtual void Update () {
-        //LifeSpan();
+        LifeSpan();
 	}
 
     public virtual void LifeSpan()
@@ -35,6 +35,10 @@ public class Explosive : MonoBehaviour {
 			Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
 			foreach (Collider hit in colliders)
 			{
+				if (hit.gameObject.GetComponent<SheepBehaviour>() != null)
+				{
+					hit.gameObject.GetComponent<SheepBehaviour>().Stun(1f);
+				}
 				Rigidbody rb = hit.GetComponent<Rigidbody>();
 
 				if (rb != null)
