@@ -27,7 +27,7 @@ public class PlayerController : Mammal
 	{
 		if (Input.GetMouseButton(0))
 		{
-            anim.SetBool("Walk", true);
+            
 			MouseToWorldRaycast raycast = RaycastScreenToWorld();
 			if (raycast.raycastHasHit)
 			{
@@ -51,7 +51,8 @@ public class PlayerController : Mammal
 			if (Physics.Raycast(ray, out rayHit.hitData, 100.0f, hittableLayers))
 			{
 				rayHit.raycastHasHit = true;
-			}
+                anim.SetBool("Walk", true);
+            }
 			else
 			{
 				rayHit.raycastHasHit = false;

@@ -28,8 +28,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5637231648752119999}
-  - component: {fileID: 5637231648752119996}
   - component: {fileID: 5637231648752119987}
+  - component: {fileID: 5637231648752119996}
   - component: {fileID: 5637231648752119992}
   - component: {fileID: 5637231648752119993}
   m_Layer: 2
@@ -54,20 +54,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &5637231648752119996
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5637231648752119986}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.35188293
-  m_Height: 1.4753251
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.7627795, z: 0.091231346}
 --- !u!114 &5637231648752119987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +68,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 17
+--- !u!136 &5637231648752119996
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5637231648752119986}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.35188293
+  m_Height: 1.4753251
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7627795, z: 0.091231346}
 --- !u!54 &5637231648752119992
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5637231648752119986}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.46
   m_Speed: 5
   m_Acceleration: 50
   avoidancePriority: 50
@@ -117,8 +117,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
+  m_Height: 1.48
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &1849478320160446818
