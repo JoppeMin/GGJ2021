@@ -13,7 +13,8 @@ public class HomingMissile : Explosive
     
 
     // Use this for initialization
-    protected virtual void Start () {
+    protected override void Start () {
+		base.Start();
         rb = gameObject.GetComponent<Rigidbody>();
         if (target == null)
             target = GameObject.Find("Player");

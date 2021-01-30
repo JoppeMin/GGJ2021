@@ -10,13 +10,17 @@ public class Explosive : MonoBehaviour {
 	public bool explosionHasForce;
 	public float explosionRadius;
 	public float explosionForce;
+	public AudioClip explosionSfx;
     // Use this for initialization
-    void Start () {
-		
+
+    protected virtual void Start ()
+	{
+
 	}
 
 	// Update is called once per frame
-	protected virtual void Update () {
+	protected virtual void Update ()
+	{
         LifeSpan();
 	}
 
@@ -45,9 +49,11 @@ public class Explosive : MonoBehaviour {
 					rb.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 3.0F, ForceMode.Impulse);
 			}
 		}
-	
 
-		Instantiate(explosionFX, gameObject.transform.position, Quaternion.identity);
-        Destroy(gameObject);
+		GameObject explosion = Instantiate(explosionFX, gameObject.transform.position, Quaternion.identity);
+		explosion.GetComponent<AudioSource>().pitch = Random.Range(0.75f, 1.25f);
+		explosion.GetComponent<AudioSource>().PlayOneShot(explosionSfx);
+
+		Destroy(gameObject);
     }
 }
