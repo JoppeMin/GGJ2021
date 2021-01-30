@@ -7,11 +7,14 @@ using UnityEngine.AI;
 public class PlayerController : Mammal
 {
 	Rigidbody rb;
+    Animator anim;
 	NavMeshAgent playerAgent;
 	[SerializeField] private LayerMask hittableLayers;
 
-	void Start()
+	protected override void Start()
     {
+		base.Start();
+        anim = gameObject.GetComponentInChildren<Animator>();
 		rb = gameObject.GetComponent<Rigidbody>();
 		playerAgent = gameObject.GetComponent<NavMeshAgent>();
 	}
@@ -19,13 +22,13 @@ public class PlayerController : Mammal
     void Update()
     {
 		Movement();
-
 	}
 
 	void Movement()
 	{
 		if (Input.GetMouseButton(0))
 		{
+            
 			MouseToWorldRaycast raycast = RaycastScreenToWorld();
 			if (raycast.raycastHasHit)
 			{
@@ -34,7 +37,8 @@ public class PlayerController : Mammal
 		}
 		else if (Input.GetMouseButtonUp(0))
 		{
-			playerAgent.ResetPath();
+            anim.SetBool("Walk", false);
+            playerAgent.ResetPath();
 		}
 	}
 
@@ -48,7 +52,8 @@ public class PlayerController : Mammal
 			if (Physics.Raycast(ray, out rayHit.hitData, 100.0f, hittableLayers))
 			{
 				rayHit.raycastHasHit = true;
-			}
+                anim.SetBool("Walk", true);
+            }
 			else
 			{
 				rayHit.raycastHasHit = false;

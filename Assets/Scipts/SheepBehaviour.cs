@@ -8,22 +8,20 @@ public class SheepBehaviour : Mammal
     Transform thePlayer;
     Rigidbody rb;
     Animator ani;
-
-    [SerializeField]
-    float runAwayRadius;
-    [SerializeField]
-    float movementSpeed;
+    ParticleSystem[] psGroup;
+	[SerializeField] GameObject soulParticle;
+    [SerializeField]float runAwayRadius;
+    [SerializeField]float movementSpeed;
 
     bool isRunning = false;
     bool enteredRadius = false;
 
     Vector3 nonYVector = new Vector3(1, 0, 1);
     Vector3 moveDirection;
-    float gravity = -1f;
 
-	private bool stunned;
-	private float timeOfStun;
-	private float stunDuration;
+    private bool stunned;
+    private float timeOfStun;
+    private float stunDuration;
 
 
     private void OnValidate()
@@ -31,19 +29,21 @@ public class SheepBehaviour : Mammal
         thePlayer = GameObject.FindGameObjectWithTag("Player").transform;
         rb = this.gameObject.GetComponent<Rigidbody>();
         ani = this.gameObject.GetComponentInChildren<Animator>();
+        psGroup = this.gameObject.GetComponentsInChildren<ParticleSystem>();
     }
 
-    private void Start()
+	protected override void Start()
     {
+		base.Start();
         ani.SetBool("Walk", false);
     }
 
-    void Update()
+	void Update()
 	{
 		if (stunned)
 		{
 			ani.SetBool("Walk", true);
-			if(Time.time - timeOfStun > stunDuration)
+			if (Time.time - timeOfStun > stunDuration)
 			{
 				stunned = false;
 			}
@@ -68,6 +68,7 @@ public class SheepBehaviour : Mammal
 				if (!isRunning)
 				{
 					StartCoroutine(RunRandomDirection());
+					PlayClip();
 				}
 
 				rb.velocity = moveDirection * movementSpeed;
@@ -78,9 +79,19 @@ public class SheepBehaviour : Mammal
 				}
 			}
 		}
-       
+	}
 
+    public virtual IEnumerator SpecialMove()
+    {
+        PlayParticleGroup(true);
+        float storeMovementSpeed = movementSpeed;
+        movementSpeed = 13;
+        isRunning = true;
+        yield return new WaitForSeconds(0.5f);
+        movementSpeed = storeMovementSpeed;
+        PlayParticleGroup(false);
     }
+
 
     IEnumerator RunRandomDirection()
     {
@@ -109,7 +120,24 @@ public class SheepBehaviour : Mammal
 	}
 
 
-    private void OnDrawGizmos()
+    private void PlayParticleGroup(bool Play)
+    {
+        foreach (ParticleSystem ps in psGroup)
+        {
+            if (Play)
+                ps.Play();
+            else
+                ps.Stop();
+        }
+    }
+
+	public override void Death()
+	{
+		Instantiate(soulParticle, transform.position, Quaternion.identity);
+		base.Death();
+	}
+
+	private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(this.transform.position, runAwayRadius);
     }
