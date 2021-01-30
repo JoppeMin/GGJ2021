@@ -8,10 +8,14 @@ public class SheepProcessor : MonoBehaviour
 
     TextMeshProUGUI sheepCounter;
     int sheepProcessed = 0;
-    public int sheepTarget = 5;
+    [SerializeField]
+    int sheepTarget = 5;
+    [HideInInspector]
+    public int amountOfSheepLeft;
 
     void OnValidate()
     {
+        amountOfSheepLeft = GameObject.FindGameObjectsWithTag("Sheep").Length;
         sheepCounter = GameObject.FindObjectOfType<TextMeshProUGUI>();
     }
     void Start()
@@ -25,12 +29,17 @@ public class SheepProcessor : MonoBehaviour
         {
             Destroy(other.gameObject);
             sheepProcessed++;
+            amountOfSheepLeft--;
             updateSheepText();
         }
     }
 
-    void updateSheepText()
+    public void updateSheepText()
     {
-        sheepCounter.text = $"{sheepProcessed}/{sheepTarget}";
+        sheepCounter.text = $"{sheepProcessed}/{sheepTarget}    {amountOfSheepLeft}";
+        if ((sheepTarget - sheepProcessed) > amountOfSheepLeft)
+        {
+            sheepCounter.text = "Game Over";
+        }
     }
 }
