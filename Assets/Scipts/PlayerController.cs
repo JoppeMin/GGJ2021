@@ -6,9 +6,14 @@ using UnityEngine.AI;
 
 public class PlayerController : Mammal
 {
-	Rigidbody rb;
+
+    [SerializeField]
+    float shoutRange;
+
+    Rigidbody rb;
     Animator anim;
 	NavMeshAgent playerAgent;
+    ParticleSystem screamPS;
 	[SerializeField] private LayerMask hittableLayers;
 
 	protected override void Start()
@@ -17,11 +22,13 @@ public class PlayerController : Mammal
         anim = gameObject.GetComponentInChildren<Animator>();
 		rb = gameObject.GetComponent<Rigidbody>();
 		playerAgent = gameObject.GetComponent<NavMeshAgent>();
+		screamPS = gameObject.GetComponentInChildren<ParticleSystem>();
 	}
 
     void Update()
     {
 		Movement();
+        ScreamBehaviour();
 	}
 
 	void Movement()
@@ -42,7 +49,22 @@ public class PlayerController : Mammal
 		}
 	}
 
-	private MouseToWorldRaycast RaycastScreenToWorld()//probably more complicated than necessary
+    void ScreamBehaviour()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Collider[] inRange = Physics.OverlapSphere(this.transform.position, shoutRange);
+            foreach (Collider go in inRange)
+            {
+                if (go.CompareTag("Sheep"))
+                {
+                    StartCoroutine(go.GetComponent<SheepBehaviour>().SpecialMove());
+                }
+            }
+        }
+    }
+
+    private MouseToWorldRaycast RaycastScreenToWorld()//probably more complicated than necessary
 	{
 		MouseToWorldRaycast rayHit;
 		if (!EventSystem.current.IsPointerOverGameObject())
