@@ -23,7 +23,7 @@ public class MissileInterceptor : MonoBehaviour
 			{
 				if (cannon != null)
 				{
-					cannon.transform.LookAt(other.transform);
+					cannon.transform.LookAt(other.transform, Vector3.forward);
 					// play PFX
 				}
 				//draw laser
