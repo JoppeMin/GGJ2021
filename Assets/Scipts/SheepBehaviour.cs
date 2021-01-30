@@ -10,18 +10,18 @@ public class SheepBehaviour : Mammal
     Animator ani;
     ParticleSystem[] psGroup;
 	[SerializeField] GameObject soulParticle;
-    [SerializeField]float runAwayRadius;
-    [SerializeField]float movementSpeed;
+    [SerializeField] protected float runAwayRadius;
+    [SerializeField] protected float movementSpeed;
 
-    bool isRunning = false;
-    bool enteredRadius = false;
+    protected bool isRunning = false;
+    protected bool enteredRadius = false;
 
     Vector3 nonYVector = new Vector3(1, 0, 1);
     Vector3 moveDirection;
 
-    private bool stunned;
-    private float timeOfStun;
-    private float stunDuration;
+    protected bool stunned;
+    protected float timeOfStun;
+    protected float stunDuration;
 
 
     private void OnValidate()
@@ -38,7 +38,7 @@ public class SheepBehaviour : Mammal
         ani.SetBool("Walk", false);
     }
 
-	void Update()
+	protected virtual void Update()
 	{
 		if (stunned)
 		{
@@ -120,7 +120,7 @@ public class SheepBehaviour : Mammal
 	}
 
 
-    private void PlayParticleGroup(bool Play)
+    protected void PlayParticleGroup(bool Play)
     {
         foreach (ParticleSystem ps in psGroup)
         {
@@ -137,7 +137,7 @@ public class SheepBehaviour : Mammal
 		base.Death();
 	}
 
-	private void OnDrawGizmos()
+    protected void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(this.transform.position, runAwayRadius);
     }
