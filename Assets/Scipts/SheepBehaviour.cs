@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SheepBehaviour : MonoBehaviour
+public class SheepBehaviour : Mammal
 {
     Transform thePlayer;
     Rigidbody rb;

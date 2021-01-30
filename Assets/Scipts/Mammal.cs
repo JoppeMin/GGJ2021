@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deadzone : MonoBehaviour
+public class Mammal : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+
+    public virtual void Death()
     {
-        if (other.CompareTag("Sheep"))
+        if (this.gameObject.CompareTag("Sheep"))
         {
-            Destroy(other.gameObject);
             SheepProcessor.instance.amountOfSheepLeft--;
             SheepProcessor.instance.updateSheepText();
         }
+        Destroy(this.gameObject);
     }
 }
