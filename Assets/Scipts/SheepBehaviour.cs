@@ -7,6 +7,7 @@ public class SheepBehaviour : MonoBehaviour
 {
     Transform thePlayer;
     Rigidbody rb;
+    Animator ani;
 
     [SerializeField]
     float runAwayRadius;
@@ -25,6 +26,12 @@ public class SheepBehaviour : MonoBehaviour
     {
         thePlayer = GameObject.FindGameObjectWithTag("Player").transform;
         rb = this.gameObject.GetComponent<Rigidbody>();
+        ani = this.gameObject.GetComponentInChildren<Animator>();
+    }
+
+    private void Start()
+    {
+        ani.SetBool("Walk", false);
     }
 
     void Update()
@@ -32,12 +39,14 @@ public class SheepBehaviour : MonoBehaviour
         RaycastHit hit;
         if (!Physics.Raycast(transform.position, Vector3.down, out hit, 1))
         {
+            ani.SetBool("Walk", true);
             return;
         } else
         {
 
             if (Vector3.Distance(transform.position, thePlayer.position) < runAwayRadius)
             {
+                ani.SetBool("Walk", true);
                 moveDirection = new Vector3(transform.position.x - thePlayer.position.x, moveDirection.y, transform.position.z - thePlayer.position.z).normalized;
             }
 
@@ -64,10 +73,12 @@ public class SheepBehaviour : MonoBehaviour
         float randomZ = Random.Range(-1f, 1f);
 
         moveDirection = new Vector3(randomX, rb.velocity.y, randomZ).normalized;
+        ani.SetBool("Walk", true);
         yield return new WaitForSeconds(timeToRun);
 
         float timeToPause = Random.Range(1f, 4f);
         moveDirection = Vector3.zero;
+        ani.SetBool("Walk", false);
         yield return new WaitForSeconds(timeToPause);
 
         isRunning = false;
