@@ -8,6 +8,7 @@ public class SheepBehaviour : Mammal
     Transform thePlayer;
     Rigidbody rb;
     Animator ani;
+	[SerializeField] GameObject soulParticle;
 
     [SerializeField]
     float runAwayRadius;
@@ -108,8 +109,13 @@ public class SheepBehaviour : Mammal
 		stunDuration = duration;
 	}
 
+	public override void Death()
+	{
+		Instantiate(soulParticle, transform.position, Quaternion.identity);
+		base.Death();
+	}
 
-    private void OnDrawGizmos()
+	private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(this.transform.position, runAwayRadius);
     }

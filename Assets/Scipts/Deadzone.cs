@@ -8,7 +8,7 @@ public class Deadzone : MonoBehaviour
     {
         if (other.CompareTag("Sheep"))
         {
-            Destroy(other.gameObject);
+			other.GetComponent<SheepBehaviour>().Death();
             SheepProcessor.instance.amountOfSheepLeft--;
             SheepProcessor.instance.updateSheepText();
         }

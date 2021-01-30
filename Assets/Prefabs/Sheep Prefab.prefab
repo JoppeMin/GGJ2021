@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4031b8712ce8947ae2b864cd5d6000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soulParticle: {fileID: 8645734907812902208, guid: 5d45fe35bd6c54a4dad198eccf80325b, type: 3}
   runAwayRadius: 8
   movementSpeed: 4
 --- !u!54 &3895468108318567336
