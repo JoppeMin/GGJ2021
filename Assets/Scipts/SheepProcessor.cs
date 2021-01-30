@@ -59,7 +59,7 @@ public class SheepProcessor : MonoBehaviour
 
     public void updateSheepText()
     {
-        sheepCounter.text = $"{sheepProcessed}/{sheepTarget}    {amountOfSheepLeft}";
+        sheepCounter.text = $"{sheepProcessed}/{sheepTarget}";
         if ((sheepTarget - sheepProcessed) > amountOfSheepLeft)
         {
             sheepCounter.text = "Game Over";

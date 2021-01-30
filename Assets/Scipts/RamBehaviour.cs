@@ -6,12 +6,6 @@ using UnityEngine;
 public class RamBehaviour : SheepBehaviour
 {
     bool isRamming = false;
-    List<GameObject> rammables;
-    
-    private void Awake()
-    {
-        rammables = GameObject.FindGameObjectsWithTag("Rammable").ToList();
-    }
 
     public override IEnumerator SpecialMove()
     {
@@ -27,19 +21,11 @@ public class RamBehaviour : SheepBehaviour
         PlayParticleGroup(false);
     }
 
-    private void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        base.Update();
-
-        if (isRamming)
+        if (collision.transform.CompareTag("Rammable"))
         {
-            foreach (GameObject rammable in rammables)
-            {
-                if (Vector3.Distance(this.gameObject.transform.position, rammable.transform.position) < 2.5f)
-                {
-                    rammable.SetActive(false);
-                }
-            }
+            Destroy(collision.gameObject);
         }
     }
 }
