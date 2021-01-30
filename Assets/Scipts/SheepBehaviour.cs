@@ -8,16 +8,10 @@ public class SheepBehaviour : Mammal
     Transform thePlayer;
     Rigidbody rb;
     Animator ani;
-<<<<<<< HEAD
     ParticleSystem[] psGroup;
-=======
 	[SerializeField] GameObject soulParticle;
->>>>>>> cd1be3321ee35c088031576e4fca7b35a9a34295
-
-    [SerializeField]
-    float runAwayRadius;
-    [SerializeField]
-    float movementSpeed;
+    [SerializeField]float runAwayRadius;
+    [SerializeField]float movementSpeed;
 
     bool isRunning = false;
     bool enteredRadius = false;
@@ -44,58 +38,12 @@ public class SheepBehaviour : Mammal
         ani.SetBool("Walk", false);
     }
 
-    void Update()
-<<<<<<< HEAD
-    {
-        if (stunned)
-        {
-            ani.SetBool("Walk", true);
-            if (Time.time - timeOfStun > stunDuration)
-            {
-                stunned = false;
-            }
-        }
-        else
-        {
-            RaycastHit hit;
-            if (!Physics.Raycast(transform.position, Vector3.down, out hit, 1))
-            {
-                ani.SetBool("Walk", true);
-                return;
-            }
-            else
-            {
-                if (Vector3.Distance(transform.position, thePlayer.position) < runAwayRadius)
-                {
-                    ani.SetBool("Walk", true);
-                    moveDirection = new Vector3(transform.position.x - thePlayer.position.x, moveDirection.y, transform.position.z - thePlayer.position.z).normalized;
-
-                    if (Input.GetMouseButtonDown(1))
-                    {
-                        StartCoroutine(SpecialMove());
-                    }
-                }
-
-                if (!isRunning)
-                {
-                    StartCoroutine(RunRandomDirection());
-                }
-
-                rb.velocity = moveDirection * movementSpeed;
-                if (rb.velocity.magnitude > 0.1f)
-                {
-                    Quaternion r = Quaternion.LookRotation(rb.velocity);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, r, Time.deltaTime * 5);
-                }
-            }
-        }
-    }
-=======
+	void Update()
 	{
 		if (stunned)
 		{
 			ani.SetBool("Walk", true);
-			if(Time.time - timeOfStun > stunDuration)
+			if (Time.time - timeOfStun > stunDuration)
 			{
 				stunned = false;
 			}
@@ -131,8 +79,7 @@ public class SheepBehaviour : Mammal
 				}
 			}
 		}
-       
->>>>>>> cd1be3321ee35c088031576e4fca7b35a9a34295
+	}
 
     public virtual IEnumerator SpecialMove()
     {
@@ -172,7 +119,7 @@ public class SheepBehaviour : Mammal
 		stunDuration = duration;
 	}
 
-<<<<<<< HEAD
+
     private void PlayParticleGroup(bool Play)
     {
         foreach (ParticleSystem ps in psGroup)
@@ -183,13 +130,12 @@ public class SheepBehaviour : Mammal
                 ps.Stop();
         }
     }
-=======
+
 	public override void Death()
 	{
 		Instantiate(soulParticle, transform.position, Quaternion.identity);
 		base.Death();
 	}
->>>>>>> cd1be3321ee35c088031576e4fca7b35a9a34295
 
 	private void OnDrawGizmos()
     {
