@@ -21,6 +21,10 @@ public class SheepBehaviour : Mammal
     Vector3 moveDirection;
     float gravity = -1f;
 
+	private bool stunned;
+	private float timeOfStun;
+	private float stunDuration;
+
 
     private void OnValidate()
     {
@@ -35,33 +39,46 @@ public class SheepBehaviour : Mammal
     }
 
     void Update()
-    {
-        RaycastHit hit;
-        if (!Physics.Raycast(transform.position, Vector3.down, out hit, 1))
-        {
-            ani.SetBool("Walk", true);
-            return;
-        } else
-        {
+	{
+		if (stunned)
+		{
+			ani.SetBool("Walk", true);
+			if(Time.time - timeOfStun > stunDuration)
+			{
+				stunned = false;
+			}
+		}
+		else
+		{
+			RaycastHit hit;
+			if (!Physics.Raycast(transform.position, Vector3.down, out hit, 1))
+			{
+				ani.SetBool("Walk", true);
+				return;
+			}
+			else
+			{
 
-            if (Vector3.Distance(transform.position, thePlayer.position) < runAwayRadius)
-            {
-                ani.SetBool("Walk", true);
-                moveDirection = new Vector3(transform.position.x - thePlayer.position.x, moveDirection.y, transform.position.z - thePlayer.position.z).normalized;
-            }
+				if (Vector3.Distance(transform.position, thePlayer.position) < runAwayRadius)
+				{
+					ani.SetBool("Walk", true);
+					moveDirection = new Vector3(transform.position.x - thePlayer.position.x, moveDirection.y, transform.position.z - thePlayer.position.z).normalized;
+				}
 
-            if (!isRunning)
-            {
-                StartCoroutine(RunRandomDirection());
-            }
+				if (!isRunning)
+				{
+					StartCoroutine(RunRandomDirection());
+				}
 
-            rb.velocity = moveDirection * movementSpeed;
-            if (rb.velocity.magnitude > 0.1f)
-            {
-                Quaternion r = Quaternion.LookRotation(rb.velocity);
-                transform.rotation = Quaternion.Slerp(transform.rotation, r, Time.deltaTime * 5);
-            }
-        }
+				rb.velocity = moveDirection * movementSpeed;
+				if (rb.velocity.magnitude > 0.1f)
+				{
+					Quaternion r = Quaternion.LookRotation(rb.velocity);
+					transform.rotation = Quaternion.Slerp(transform.rotation, r, Time.deltaTime * 5);
+				}
+			}
+		}
+       
 
     }
 
@@ -83,6 +100,13 @@ public class SheepBehaviour : Mammal
 
         isRunning = false;
     }
+
+	public void Stun(float duration)
+	{
+		stunned = true;
+		timeOfStun = Time.time;
+		stunDuration = duration;
+	}
 
 
     private void OnDrawGizmos()
