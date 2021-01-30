@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
 	public GameObject rocket1, rocket2;
 	public GameObject sheep1, sheep2, sheep3;
 	private Vector3 startpos1, startpos2;
+	public MusicContainer container;
 
 	private float bouncespeed = 1f;
 	private float bounceheight = 0.6f;
@@ -39,6 +40,7 @@ public class MainMenu : MonoBehaviour
 
 	public void StartGame()
 	{
+		container.PlayMusic();
 		SceneManager.LoadScene("Level 1");
 	}
 }
