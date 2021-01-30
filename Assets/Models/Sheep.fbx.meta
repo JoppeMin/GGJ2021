@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: -3100369314251171874
     second: Idle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sheep
+    second: {fileID: 2100000, guid: 53fc905ce22d750468f1411287f558d8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
