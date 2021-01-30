@@ -11,8 +11,9 @@ public class PlayerController : Mammal
 	NavMeshAgent playerAgent;
 	[SerializeField] private LayerMask hittableLayers;
 
-	void Start()
+	protected override void Start()
     {
+		base.Start();
         anim = gameObject.GetComponentInChildren<Animator>();
 		rb = gameObject.GetComponent<Rigidbody>();
 		playerAgent = gameObject.GetComponent<NavMeshAgent>();

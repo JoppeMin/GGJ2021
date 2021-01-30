@@ -34,8 +34,9 @@ public class SheepBehaviour : Mammal
         ani = this.gameObject.GetComponentInChildren<Animator>();
     }
 
-    private void Start()
+	protected override void Start()
     {
+		base.Start();
         ani.SetBool("Walk", false);
     }
 
@@ -69,6 +70,7 @@ public class SheepBehaviour : Mammal
 				if (!isRunning)
 				{
 					StartCoroutine(RunRandomDirection());
+					PlayClip();
 				}
 
 				rb.velocity = moveDirection * movementSpeed;
