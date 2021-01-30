@@ -1,20 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Collider))]//trigger collider for detecting incoming missiles
 public class MissileInterceptor : MonoBehaviour
 {
 	[SerializeField] private GameObject cannon;
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.GetComponent<HomingMissileV2>())
+		if (other.gameObject.GetComponent<HomingMissileV2>() != null)
 		{
-			Debug.Log("doei raket");
 			if(cannon != null)
 			{
 				cannon.transform.LookAt(other.transform);
-				Debug.Log("pew pew pew");
 				// play PFX
 			}
 

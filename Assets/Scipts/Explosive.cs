@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Explosive : MonoBehaviour {
 
-   protected float lifetime;
+    protected float lifetime;
     private float aliveTime;
 	public GameObject explosionFX;
+	public bool explosionHasForce;
+	public float explosionRadius;
+	public float explosionForce;
     // Use this for initialization
     void Start () {
 		
@@ -26,7 +29,21 @@ public class Explosive : MonoBehaviour {
 
     public virtual void FuckingExplode()
     {
-        Instantiate(explosionFX, gameObject.transform.position, Quaternion.identity);
+		if (explosionHasForce)
+		{
+			Vector3 explosionPos = transform.position;
+			Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
+			foreach (Collider hit in colliders)
+			{
+				Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+				if (rb != null)
+					rb.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 3.0F, ForceMode.Impulse);
+			}
+		}
+	
+
+		Instantiate(explosionFX, gameObject.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
