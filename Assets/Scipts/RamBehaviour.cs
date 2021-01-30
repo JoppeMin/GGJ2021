@@ -11,6 +11,7 @@ public class RamBehaviour : SheepBehaviour
     {
         PlayParticleGroup(true);
         float storeMovementSpeed = movementSpeed;
+        moveDirection = new Vector3(transform.position.x - thePlayer.position.x, moveDirection.y, transform.position.z - thePlayer.position.z).normalized;
         movementSpeed = 15;
         isRunning = true;
         isRamming = true;

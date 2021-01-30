@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SheepBehaviour : Mammal
 {
-    Transform thePlayer;
+    protected Transform thePlayer;
     protected Rigidbody rb;
     protected Animator ani;
 	protected bool specialMoveActive;
@@ -18,7 +18,7 @@ public class SheepBehaviour : Mammal
     protected bool enteredRadius = false;
 
     Vector3 nonYVector = new Vector3(1, 0, 1);
-    Vector3 moveDirection;
+    protected Vector3 moveDirection;
 
     protected bool stunned;
     protected float timeOfStun;
