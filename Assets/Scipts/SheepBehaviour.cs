@@ -29,34 +29,37 @@ public class SheepBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, thePlayer.position) < runAwayRadius)
-        {
-            moveDirection = new Vector3(transform.position.x - thePlayer.position.x, moveDirection.y, transform.position.z - thePlayer.position.z).normalized;
-        }
-
-        if (!isRunning)
-        {
-            StartCoroutine(RunRandomDirection());
-        }
-
         RaycastHit hit;
         if (!Physics.Raycast(transform.position, Vector3.down, out hit, 1))
         {
-            moveDirection.y = gravity;
+            return;
+        } else
+        {
+
+            if (Vector3.Distance(transform.position, thePlayer.position) < runAwayRadius)
+            {
+                moveDirection = new Vector3(transform.position.x - thePlayer.position.x, moveDirection.y, transform.position.z - thePlayer.position.z).normalized;
+            }
+
+            if (!isRunning)
+            {
+                StartCoroutine(RunRandomDirection());
+            }
+
+            rb.velocity = moveDirection * movementSpeed;
+            if (rb.velocity.magnitude > 0.1f)
+            {
+                Quaternion r = Quaternion.LookRotation(rb.velocity);
+                transform.rotation = Quaternion.Slerp(transform.rotation, r, Time.deltaTime * 5);
+            }
         }
 
-        rb.velocity = moveDirection * movementSpeed;
-        if (rb.velocity.magnitude > 0.1f)
-        {
-            Quaternion r = Quaternion.LookRotation(rb.velocity);
-            transform.rotation = Quaternion.Slerp(transform.rotation, r, Time.deltaTime * 5);
-        }
     }
 
     IEnumerator RunRandomDirection()
     {
         isRunning = true;
-        float timeToRun = Random.Range(0.5f, 1.5f);
+        float timeToRun = Random.Range(0.2f, 0.6f);
         float randomX = Random.Range(-1f, 1f);
         float randomZ = Random.Range(-1f, 1f);
 
