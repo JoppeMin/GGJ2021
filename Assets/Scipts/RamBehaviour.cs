@@ -22,7 +22,7 @@ public class RamBehaviour : SheepBehaviour
         PlayParticleGroup(false);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollision(Collision collision)
     {
         if (collision.transform.CompareTag("Rammable") && isRamming)
         {
