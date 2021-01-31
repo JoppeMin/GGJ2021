@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicContainer : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class MusicContainer : MonoBehaviour
 		DontDestroyOnLoad(transform.gameObject);
 		_audioSource = GetComponent<AudioSource>();
 		_audioSource.volume = 0.4f;
+	}
+
+	void Update()
+	{
+		if (Input.GetButtonDown("Restart"))
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		}
 	}
 
 	public void PlayMusic()

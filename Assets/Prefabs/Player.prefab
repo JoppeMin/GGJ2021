@@ -4994,7 +4994,7 @@ MonoBehaviour:
   shoutCooldown: 1
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 25
+    m_Bits: 24
 --- !u!136 &5637231648752119996
 CapsuleCollider:
   m_ObjectHideFlags: 0

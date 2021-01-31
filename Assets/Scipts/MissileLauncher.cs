@@ -27,7 +27,6 @@ public class MissileLauncher : MonoBehaviour
 		FireAtClosestSheep();
 	}
 
-
 	void FireAtClosestSheep()
 	{
 		if (targets.Count > 0)
