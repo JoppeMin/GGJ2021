@@ -58,8 +58,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7591a9affb4560147b3abe9ed2c00896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadSheep: {fileID: 21300000, guid: e272c1636aca47749b45033d2adb0b6f, type: 3}
   sheepTarget: 5
-  amountOfSheepLeft: 2
+  amountOfSheepLeft: 4
 --- !u!64 &287615782197294386
 MeshCollider:
   m_ObjectHideFlags: 0

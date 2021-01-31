@@ -95,7 +95,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 5
   m_Center: {x: -0.00000010430813, y: 0.67849714, z: 0.031804115}
 --- !u!114 &8435770582397739825
 MonoBehaviour:
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 4986753960677732232}
   - component: {fileID: 7120319685985770306}
   m_Layer: 0
-  m_Name: Launcher
+  m_Name: MissileLauncherPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
