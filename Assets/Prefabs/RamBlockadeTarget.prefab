@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6508634506779630969}
   - component: {fileID: 6508634506779630973}
   m_Layer: 0
-  m_Name: RamBlockade 1
+  m_Name: RamBlockadeTarget
   m_TagString: Rammable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,6 +123,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c49de6d06df25724e8b3ab0c86146b66, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c49de6d06df25724e8b3ab0c86146b66, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c49de6d06df25724e8b3ab0c86146b66, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c49de6d06df25724e8b3ab0c86146b66, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c49de6d06df25724e8b3ab0c86146b66, type: 3}
       propertyPath: m_LocalPosition.x

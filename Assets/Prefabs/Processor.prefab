@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: Processor
   m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.38, y: 0.44743383, z: 0.595154}
-  m_Center: {x: 0, y: 0.24513192, z: 0.35757694}
+  m_Size: {x: 0.41, y: 0.44743383, z: 0.24}
+  m_Center: {x: 0, y: 0.24513192, z: 0.3}
 --- !u!114 &263467512039843638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sheepTarget: 5
-  amountOfSheepLeft: 7
+  amountOfSheepLeft: 2
 --- !u!64 &287615782197294386
 MeshCollider:
   m_ObjectHideFlags: 0
