@@ -8,12 +8,14 @@ public class MusicContainer : MonoBehaviour
     public static MusicContainer instance;
 
 	private AudioSource _audioSource;
+	public AudioClip winsound;
+	private float defaultvolume = 0.4f;
 	private void Awake()
 	{
         instance = this;
 		DontDestroyOnLoad(transform.gameObject);
 		_audioSource = GetComponent<AudioSource>();
-		_audioSource.volume = 0.4f;
+		_audioSource.volume = defaultvolume;
 	}
 
 	void Update()
@@ -34,9 +36,13 @@ public class MusicContainer : MonoBehaviour
 	{
 		_audioSource.Stop();
 	}
+
     public IEnumerator LoadNextLevel()
     {
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		_audioSource.volume = 0.15f;
+		_audioSource.PlayOneShot(winsound, 2.5f);
+		yield return new WaitForSeconds(3);
+		_audioSource.volume = defaultvolume;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
