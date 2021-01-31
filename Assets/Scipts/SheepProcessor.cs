@@ -72,6 +72,7 @@ public class SheepProcessor : MonoBehaviour
             sheepCounter.text = "Level Complete \n \n Great Job!";
             sheepCounter.alignment = TextAlignmentOptions.Center;
             StartCoroutine(MusicContainer.instance.LoadNextLevel());
+            this.gameObject.GetComponent<ParticleSystem>().Play();
         }
     }
 }

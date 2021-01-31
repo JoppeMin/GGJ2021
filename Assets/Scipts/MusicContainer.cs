@@ -41,7 +41,7 @@ public class MusicContainer : MonoBehaviour
     {
 		_audioSource.volume = 0.15f;
 		_audioSource.PlayOneShot(winsound, 2.5f);
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(5);
 		_audioSource.volume = defaultvolume;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
