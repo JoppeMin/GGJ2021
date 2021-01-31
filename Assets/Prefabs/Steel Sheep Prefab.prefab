@@ -10038,6 +10038,7 @@ MonoBehaviour:
   movementSpeed: 4
   freezeTime: 8
   scaleMultiplier: 1.5
+  metal: {fileID: 8300000, guid: 590ccc09507dbbe4a9807c28b3a78560, type: 3}
 --- !u!54 &3895468108318567336
 Rigidbody:
   m_ObjectHideFlags: 0
