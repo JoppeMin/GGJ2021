@@ -10,29 +10,32 @@ public class MissileLauncher : MonoBehaviour
 
 	[SerializeField] private float timeBetweenShots;
 	private float timeSinceLastShot;
-	public List<GameObject> targets = new List<GameObject>();
+	List<GameObject> targets = new List<GameObject>();
+	public float rotationSpeed;// > 0f and <1f pls
+	GameObject crosshair;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
+	// Start is called before the first frame update
+	void Start()
+	{
 		timeSinceLastShot = Time.time;
+		crosshair.SetActive(false);
 	}
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if(Time.time - timeSinceLastShot > timeBetweenShots)
-		{
-			FireAtClosestSheep();
-			timeSinceLastShot = Time.time;
-		}
-    }
+	// Update is called once per frame
+	void FixedUpdate()
+	{
+		FireAtClosestSheep();
+	}
+
 
 	void FireAtClosestSheep()
 	{
-		if(targets.Count > 0)
+		if (targets.Count > 0)
 		{
+			if (!crosshair.activeSelf)
+			{
+				crosshair.SetActive(true);
+			}
 			GameObject closestTarget = null;
 			float smallestDist = 9999f;
 			foreach (GameObject sheep in targets)//which sheep is closest?!
@@ -44,12 +47,33 @@ public class MissileLauncher : MonoBehaviour
 					closestTarget = sheep;
 				}
 			}
-			if( closestTarget != null)//null check
+
+			RotateTowardsTarget(closestTarget.transform.position);//rotate to target
+			crosshair.transform.position = closestTarget.transform.position;
+
+			if (Time.time - timeSinceLastShot > timeBetweenShots)//fire if cooldown allows it
 			{
-				transform.LookAt(closestTarget.transform, Vector3.up);
-				FireMissile(closestTarget.gameObject);
+				if (closestTarget != null)//null check
+				{
+					FireMissile(closestTarget.gameObject);
+					timeSinceLastShot = Time.time;
+				}
 			}
 		}
+		else
+		{
+			if(crosshair.activeSelf)
+			{
+				crosshair.SetActive(false);
+			}
+		}
+	}
+
+	void RotateTowardsTarget(Vector3 targetPos)
+	{
+		Vector3 lookPos = targetPos - transform.position;
+		lookPos.y = 0f;
+		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookPos, Vector3.up), rotationSpeed);
 	}
 
 
