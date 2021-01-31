@@ -106,7 +106,7 @@ public class SheepBehaviour : Mammal
     IEnumerator RunRandomDirection()
     {
         isRunning = true;
-        float timeToRun = Random.Range(0.2f, 0.6f);
+        float timeToRun = Random.Range(0.1f, 0.4f);
         float randomX = Random.Range(-1f, 1f);
         float randomZ = Random.Range(-1f, 1f);
 
