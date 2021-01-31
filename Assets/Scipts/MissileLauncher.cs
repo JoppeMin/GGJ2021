@@ -12,7 +12,7 @@ public class MissileLauncher : MonoBehaviour
 	private float timeSinceLastShot;
 	List<GameObject> targets = new List<GameObject>();
 	public float rotationSpeed;// > 0f and <1f pls
-	GameObject crosshair;
+	public GameObject crosshair;
 
 	// Start is called before the first frame update
 	void Start()
