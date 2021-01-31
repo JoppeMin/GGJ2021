@@ -16,7 +16,7 @@ public class MusicContainer : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetButtonDown("Restart"))
+		if (Input.GetKeyDown(KeyCode.R))
 		{
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
