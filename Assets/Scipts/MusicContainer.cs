@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MusicContainer : MonoBehaviour
 {
+    public static MusicContainer instance;
 
 	private AudioSource _audioSource;
 	private void Awake()
 	{
+        instance = this;
 		DontDestroyOnLoad(transform.gameObject);
 		_audioSource = GetComponent<AudioSource>();
 		_audioSource.volume = 0.4f;
@@ -32,4 +34,9 @@ public class MusicContainer : MonoBehaviour
 	{
 		_audioSource.Stop();
 	}
+    public IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

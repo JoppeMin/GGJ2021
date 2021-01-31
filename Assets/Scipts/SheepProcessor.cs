@@ -67,5 +67,11 @@ public class SheepProcessor : MonoBehaviour
             sheepCounter.alignment = TextAlignmentOptions.Center;
             GameObject.FindObjectOfType<Image>().sprite = deadSheep;
         }
+        else if (sheepProcessed >= sheepTarget)
+        {
+            sheepCounter.text = "Level Complete \n \n Great Job!";
+            sheepCounter.alignment = TextAlignmentOptions.Center;
+            StartCoroutine(MusicContainer.instance.LoadNextLevel());
+        }
     }
 }
