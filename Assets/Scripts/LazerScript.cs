@@ -27,7 +27,6 @@ public class LazerScript : MonoBehaviour
 
 	void Update()
 	{
-		this.transform.Rotate(new Vector3(0.2f, 0, 0));
 
 		lr.startColor = new Color(1, widthFactor, widthFactor, widthFactor);
 		lr.endColor = new Color(1, widthFactor, widthFactor, widthFactor);
@@ -55,6 +54,7 @@ public class LazerScript : MonoBehaviour
 					if (hit.collider.gameObject.GetComponent<SteelSheep>() != null)
 					{
 						//skip
+
 					}
 					else
 					{
