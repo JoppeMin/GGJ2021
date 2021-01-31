@@ -2,8 +2,34 @@ fileFormatVersion: 2
 guid: 28ca70af7448afc48b86807d41416cfc
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
-  externalObjects: {}
+  internalIDToNameTable:
+  - first:
+      74: -4350187688499998993
+    second: Processing
+  - first:
+      74: 6512981421333049641
+    second: Armature.003|Idle
+  - first:
+      74: -6249406432689993321
+    second: Armature.003|Processing
+  - first:
+      74: 3869783202426903800
+    second: Armature.003|Walk
+  - first:
+      74: -3885655776496639970
+    second: SpinningWheel|Processing
+  - first:
+      74: -7167441298057004591
+    second: Whool|Processing
+  - first:
+      74: 3856967901580680567
+    second: Processor|Processing
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sheep
+    second: {fileID: 2100000, guid: 7ba036594c2cf874f9010fdafa59eb87, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -39,10 +65,10 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
