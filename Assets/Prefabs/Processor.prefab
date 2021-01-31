@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 263467512039843637}
   - component: {fileID: 263467512039843626}
   - component: {fileID: 263467512039843638}
+  - component: {fileID: 1663958152}
   m_Layer: 0
   m_Name: Processor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &263467512039843637
 Transform:
@@ -59,8 +60,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deadSheep: {fileID: 21300000, guid: e272c1636aca47749b45033d2adb0b6f, type: 3}
-  sheepTarget: 5
-  amountOfSheepLeft: 4
+  sheepTarget: 2
+  amountOfSheepLeft: 0
+--- !u!136 &1663958152
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263467512039843625}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.46
+  m_Height: 13.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &287615782197294386
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -101,6 +116,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 263467512039843637}
     m_Modifications:
+    - target: {fileID: -8919361515717770057, guid: 95e6f58676be92a40aee94ac59a13644, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 95e6f58676be92a40aee94ac59a13644, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -157,9 +176,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8197870063886317719, guid: 95e6f58676be92a40aee94ac59a13644, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 95e6f58676be92a40aee94ac59a13644, type: 3}
       propertyPath: m_Name
       value: Processor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 95e6f58676be92a40aee94ac59a13644, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4661466278779102986, guid: 95e6f58676be92a40aee94ac59a13644, type: 3}
       propertyPath: m_DirtyAABB

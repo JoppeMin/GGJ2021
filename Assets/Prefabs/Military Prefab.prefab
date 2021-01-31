@@ -10092,7 +10092,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d0ffa1270f50696498266fbef38e2d7e, type: 3}
   - {fileID: 8300000, guid: 2ad79573eeb1d104897a9b3b43a8a6df, type: 3}
   soulParticle: {fileID: 8645734907812902208, guid: 5d45fe35bd6c54a4dad198eccf80325b, type: 3}
-  runAwayRadius: 3.5
+  runAwayRadius: 2
   movementSpeed: 4
   activeDuration: 3
 --- !u!114 &2601673960063836614
