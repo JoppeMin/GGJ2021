@@ -9994,7 +9994,7 @@ MonoBehaviour:
   rotationSpeed: 5
   velocity: 0
   smokeTrail: {fileID: 1342771564910600}
-  _maxSpeed: 15
+  _maxSpeed: 6
   _force: 6
   _steeringThreshold: 0
   _rotationForce: 0
