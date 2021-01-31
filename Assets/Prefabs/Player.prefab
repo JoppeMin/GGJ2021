@@ -4991,9 +4991,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7c4ea226253b969438b07a9da1ed9111, type: 3}
   - {fileID: 8300000, guid: ebab9e78d07943545a864331a6524a9c, type: 3}
   shoutRange: 4
+  shoutCooldown: 1
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 17
+    m_Bits: 25
 --- !u!136 &5637231648752119996
 CapsuleCollider:
   m_ObjectHideFlags: 0
