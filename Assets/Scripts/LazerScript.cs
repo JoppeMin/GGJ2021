@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LazerScript : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class LazerScript : MonoBehaviour
 	Transform lrTransform;
 	public LineRenderer lr;
 	Transform ps;
+	[SerializeField] NavMeshObstacle obstacle;
 
 	float widthFactor = 0;
 	Vector3 lrPos;
@@ -49,7 +51,7 @@ public class LazerScript : MonoBehaviour
 				ps.position = hit.point;
 				ps.rotation = Quaternion.LookRotation(hit.normal);
 
-				if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Sheep"))
+				if (hit.collider.CompareTag("Sheep"))
 				{
 					if (hit.collider.gameObject.GetComponent<SteelSheep>() != null)
 					{
@@ -68,5 +70,9 @@ public class LazerScript : MonoBehaviour
 			lrPos = lr.transform.TransformDirection(Vector3.forward * 1000);
 			ps.position = new Vector3(1000, 1000, 1000);
 		}
+
+		float center = Vector3.Distance(lr.transform.position, lrPos) * 0.5f;
+		obstacle.center = new Vector3(obstacle.center.x, obstacle.center.y, center);
+		obstacle.size = new Vector3(obstacle.size.x, obstacle.size.y, center * 2f);
 	}
 }
