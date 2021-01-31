@@ -9795,8 +9795,8 @@ MonoBehaviour:
   lifetime: 4
   explosionFX: {fileID: 1475756548925628, guid: af08febe658a9b447a9a77df82defb62, type: 3}
   explosionHasForce: 1
-  explosionRadius: 3
-  explosionForce: 10
+  explosionRadius: 0.75
+  explosionForce: 7
   explosionSfx: {fileID: 8300000, guid: f306c23e65ec40742a667784266139cd, type: 3}
   target: {fileID: 0}
   rotationSpeed: 5

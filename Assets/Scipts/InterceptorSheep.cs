@@ -18,7 +18,7 @@ public class InterceptorSheep : SheepBehaviour
 			specialMoveActive = true;
 			interceptor.isEnabled = true;
 			yield return new WaitForSeconds(activeDuration);
-			interceptor.isEnabled = false;
+			//interceptor.isEnabled = false;
 			specialMoveActive = false;
 		}
 		yield break;
