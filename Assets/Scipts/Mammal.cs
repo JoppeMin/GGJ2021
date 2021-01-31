@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mammal : MonoBehaviour
 {
 	public List<AudioClip> clips = new List<AudioClip>();
-	AudioSource audioSource;
+	protected AudioSource audioSource;
 
 	protected virtual void Start()
 	{

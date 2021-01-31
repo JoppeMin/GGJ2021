@@ -7,14 +7,16 @@ public class SteelSheep : SheepBehaviour
 {
 	public float freezeTime = 4;
 	public float scaleMultiplier;
+	public AudioClip metal;
 	private float storeMovementSpeed;
 	private Vector3 storeScale;
+
 
 	public override IEnumerator SpecialMove()
 	{
 		if (!specialMoveActive)
 		{
-			
+			audioSource.PlayOneShot(metal);
 			specialMoveActive = true;
 			Stun(9999f);
 			rb.isKinematic = true;//schapen duwen hem anders weg
