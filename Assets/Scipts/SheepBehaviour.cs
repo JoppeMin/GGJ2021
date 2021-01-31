@@ -25,7 +25,7 @@ public class SheepBehaviour : Mammal
     protected float stunDuration;
 
 
-    private void OnValidate()
+    private void Awake()
     {
         thePlayer = GameObject.FindGameObjectWithTag("Player").transform;
         rb = this.gameObject.GetComponent<Rigidbody>();

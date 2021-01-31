@@ -21,7 +21,7 @@ public class SheepProcessor : MonoBehaviour
     float spoolThickness = 0;
     float spoolTarget = 0;
 
-    void OnValidate()
+    void Awake()
     {
         shapekey = this.transform.GetComponentInChildren<SkinnedMeshRenderer>();
         anim = GetComponentInChildren<Animator>();
