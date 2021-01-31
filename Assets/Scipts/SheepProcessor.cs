@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class SheepProcessor : MonoBehaviour
@@ -10,12 +11,12 @@ public class SheepProcessor : MonoBehaviour
     private SkinnedMeshRenderer shapekey;
     private Animator anim;
 
+    [SerializeField] Sprite deadSheep;
     TextMeshProUGUI sheepCounter;
     int sheepProcessed = 0;
-    [SerializeField]
-    int sheepTarget = 5;
-    [HideInInspector]
-    public int amountOfSheepLeft;
+
+    [SerializeField] int sheepTarget = 5;
+    [HideInInspector] public int amountOfSheepLeft;
 
     float spoolThickness = 0;
     float spoolTarget = 0;
@@ -62,7 +63,9 @@ public class SheepProcessor : MonoBehaviour
         sheepCounter.text = $"{sheepProcessed}/{sheepTarget}";
         if ((sheepTarget - sheepProcessed) > amountOfSheepLeft)
         {
-            sheepCounter.text = "Game Over";
+            sheepCounter.text = "Game Over \n \n Press 'R' To Restart";
+            sheepCounter.alignment = TextAlignmentOptions.Center;
+            GameObject.FindObjectOfType<Image>().sprite = deadSheep;
         }
     }
 }
